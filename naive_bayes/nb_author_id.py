@@ -35,7 +35,6 @@ print "prediction time: ", round(time()-t1, 3), "s"
 
 accuracy = accuracy_score(labels_test, pred)
 
-print "prediction: ", pred
 print "accuracy: ", accuracy
 
 #########################################################
