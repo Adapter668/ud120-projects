@@ -19,4 +19,15 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+keys = enron_data.keys()
 
+countOfPoi = 0
+for k in keys:
+    poi = enron_data.get(k).get("poi")
+    if poi == 1:
+        countOfPoi += 1
+
+print "size: ", len(enron_data)
+print "values: ", enron_data.get(keys[0])
+print "keys: ", keys
+print "count of POI: ", countOfPoi

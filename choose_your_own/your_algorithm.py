@@ -3,6 +3,9 @@
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
+from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
@@ -32,6 +35,13 @@ plt.show()
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
+clf = AdaBoostClassifier(n_estimators=75)
+#clf = RandomForestClassifier(n_estimators=25)
+#clf = KNeighborsClassifier(n_neighbors=1)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+
+accuracy = accuracy_score(labels_test, pred)
 
 
 
@@ -39,6 +49,7 @@ plt.show()
 
 
 try:
+    print "accuracy: ", accuracy
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
